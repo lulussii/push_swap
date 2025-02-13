@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:32:09 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/12 15:23:45 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:11:08 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isdigit(char *str)
 	i = 0;
 	while(str[i])
 	{
-		if (str[i] != ' ' && (str[i] < '0' || str[i] > '9'))
+		if (str[i] != ' ' && ((str[i] < '0' || str[i] > '9') && (str[i] != '-' && str[i] != '+')))
 		{
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 09:33:47 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/12 17:56:14 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:28:40 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef	struct s_sort
 typedef struct s_stack_node
 {
 	int					value;
-	int					cost;
 	t_sort				sort;
 	struct s_stack_node	*next;
 }						t_stack;

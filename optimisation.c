@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:15:51 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/07 18:13:20 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:02:58 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	fill_rb(t_stack **stack, t_stack *node)
 	if (rotate < 0)
 		node->sort.rb = -1;
 	else 
-		node->sort.rb = rotate;
+		node->sort.rb = rotate - 1;
 }
 
 void	fill_rrb(t_stack **stack, t_stack *node)
@@ -53,7 +53,7 @@ void	fill_rrb(t_stack **stack, t_stack *node)
 	if (rotate > 0)
 		node->sort.rrb = -1;
 	else 
-		node->sort.rrb = rotate * -1;
+		node->sort.rrb = (rotate * -1) + 1;
 }
 
 void	fill_structure(t_stack **stack)

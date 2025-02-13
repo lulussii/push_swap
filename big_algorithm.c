@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:53:06 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/12 18:59:28 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:45:53 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_quarts(t_quart *quarts, t_stack *stack)
 {
 	while (stack)
 	{
-		if (stack->value > quarts->q1 && stack->value < quarts->q3)
+		if (stack->value >= quarts->q1 && stack->value <= quarts->q3)
 			return (1);
 		stack = stack->next;
 	}
@@ -44,7 +44,7 @@ void	sort_to_b(t_stack **stack, t_quart *quarts)
 		push_b(stack);
 		rotate_b(&stack[1], 1);
 	}
-	else if (stack[0]->value <= quarts->q3 && stack[0]->value >= quarts->median)
+	else if (stack[0]->value <= quarts->q3 && stack[0]->value > quarts->median)
 		push_b(stack);
 	if (!check)
 	{
@@ -75,15 +75,13 @@ int	find_node_place(t_stack *stack, t_stack *node)
 		while(stack)
 		{
 			i++;
-			if(stack->value < node->value)
+			if(stack->value == node->value)
 				res = i;
 			stack = stack->next;
 		}
 	}
-	if (i > len / 2)
-		res = i - len;
-	else
-		res = i;
+	if (res > len / 2)
+		res -= len;
 	return (res);
 }
 
@@ -126,15 +124,15 @@ t_stack	*node_to_push(t_stack **stack)
 	cmp = -1;
 	while (current)
 	{
-		if (current->sort.ra < 0 && current->sort.rb < 0)
+		if (current->sort.ra <= 0 && current->sort.rb <= 0)
 			tmp = current->sort.rra + current->sort.rrb;
-		else if (current->sort.rra < 0 && current->sort.rb < 0)
+		else if (current->sort.rra <= 0 && current->sort.rb <= 0)
 			tmp = current->sort.ra + current->sort.rrb;
-		else if (current->sort.ra < 0 && current->sort.rrb < 0)
+		else if (current->sort.ra <= 0 && current->sort.rrb <= 0)
 			tmp = current->sort.rra + current->sort.rb;
-		else if (current->sort.rra < 0 && current->sort.rrb < 0)
+		else if (current->sort.rra <= 0 && current->sort.rrb <= 0)
 			tmp = current->sort.ra + current->sort.rb;
-		if(tmp < cmp || cmp == -1)
+		if(cmp == -1 || tmp < cmp )
 		{
 			cmp = tmp;
 			to_push = current;	
@@ -218,11 +216,19 @@ void	push_maximum(t_stack **stack)
 
 void	set_up_a(t_stack **stack)
 {
-	t_stack *min;
+	int min;
+	t_stack	*min_node;
 
-	min = find_number_min(stack[0]);
-	while(stack[0] != min)
-		rotate_a(&stack[0], 1);
+	min_node = find_number_min(stack[0]);
+	min = find_min_position(stack[0]);
+	
+	while(stack[0] != min_node)
+	{
+		if(min > count_nodes(stack[0]) / 2)
+			reverse_rotate_a(&stack[0], 1);
+		else
+			rotate_a(&stack[0], 1);
+	}
 }
 
 void	big_algorithm(t_stack **stack)
@@ -245,4 +251,5 @@ void	big_algorithm(t_stack **stack)
 	while(stack[1])
 		push_in_a(stack);
 	set_up_a(stack);
+	free(quarts);
 }

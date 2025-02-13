@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:47:29 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/12 15:57:51 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:03:17 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,19 @@ t_stack *add_to_stack_a(long *digits_array, char *str)
     return(stack_a);
 }
 
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+	
+	while(*stack)
+	{
+		tmp =(*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	free(stack);
+}
+
 t_stack *init_stack(int argc, char **argv)
 {
     long    *digits_array;
@@ -51,7 +64,7 @@ t_stack *init_stack(int argc, char **argv)
     t_stack *stack_a = NULL;
     
     str = check_args(argc, argv);
-    digits_array = set_up_digits_array(str);
+    digits_array = set_up_digits_array(str, stack_a);
     if(!check_dups(digits_array, str))
         {
             free_all(stack_a, digits_array, str);
@@ -59,6 +72,5 @@ t_stack *init_stack(int argc, char **argv)
             exit(1);
         }
     stack_a = add_to_stack_a(digits_array, str);
-    print_stack(stack_a);
     return (stack_a);
 }

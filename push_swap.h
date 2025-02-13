@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:07:53 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/12 18:09:46 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:20:58 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int     count_nodes(t_stack *stack_a);
 t_stack *new_node(int value);
 t_stack *add_to_stack_a(long *digits_array, char *str);
 t_stack *init_stack(int argc, char **argv);
+void	free_stack(t_stack **stack);
 
 /* CHECK_ERRORS */
 char    *check_args(int argc, char **argv);
