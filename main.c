@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:07:55 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/13 18:04:57 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:10:13 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ long    *fill_digits_array(char *str, long *digits_array)
                 write(2, "Error\n", 6);
                 exit(1);
             }
-        if (str[i] == '-')
+        if (str[i] == '-' || str[i] == '+')
 			i++;
 		while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 			i++;
@@ -71,12 +71,6 @@ long     *set_up_digits_array(char *str)
     digits_array = malloc(sizeof(long) * count_digits(str));
     if (!digits_array)
         return(NULL);
-    if(!ft_isdigit(str))
-        {
-            free_all(NULL, digits_array, str);
-            write(2, "Error\n", 6);
-            exit(1);
-        }
     fill_digits_array(str, digits_array);
     return(digits_array);
 }
@@ -138,8 +132,8 @@ int main(int argc, char **argv)
     stack = malloc(sizeof(t_stack) * 2);
 	if (!stack)
 		return (0);
-    stack[0] = init_stack(argc, argv);
+    stack[0] = init_stack(argc, argv, stack);
     stack[1] = NULL;
     sort_algorithm(stack);
-    free_stack(&stack[0]);
+    free_stack(stack);
 }

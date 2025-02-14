@@ -6,11 +6,11 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:47:56 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/12 15:51:40 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:25:03 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 char	*check_args(int argc, char **argv)
 {
@@ -29,32 +29,53 @@ char	*check_args(int argc, char **argv)
 	return (str);
 }
 
-int     check_dups(long *array, char *str)
+int	check_dups(long *array, char *str)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while(i < count_digits(str))
-    {
-        j = i + 1;
-        while (j < count_digits(str))
-            {
-                if(array[i] == array[j])
-                    return(0);
-                j++;
-            }
-        i++;
-    }
-    return(1);
+	i = 0;
+	while (i < count_digits(str))
+	{
+		j = i + 1;
+		while (j < count_digits(str))
+		{
+			if (array[i] == array[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
-void    free_all(t_stack *stack, long *array, char *str)
+int	check_errors(char *str)
 {
-    if(stack)
-        free(stack);
-    if(array)
-        free(array);
-    if(str)
-        free(str);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && str[i] != ' ' && ((str[i]) != '-'
+				&& str[i] != '+'))
+			return (0);
+		else if ((str[i] == '-' || str[i] == '+') && !ft_isdigit(str[i + 1]))
+			return (0);
+		else if (i > 0 && (str[i] == '-' || str[i] == '+') && str[i - 1] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	free_all(t_stack **big_stack, t_stack **stack, long *array, char *str)
+{
+	if(stack)
+		free(stack);
+	if (big_stack)
+		free_stack(big_stack);
+	if (array)
+		free(array);
+	if (str)
+		free(str);
 }

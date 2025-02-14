@@ -1,7 +1,7 @@
 MAKEFLAGS += --no-print-directory
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRCS = 	main.c\
 		check_errors.c\

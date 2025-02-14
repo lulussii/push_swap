@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:07:53 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/13 17:20:58 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:25:49 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ int     count_nodes(t_stack *stack_a);
 /* INITIALISATION STACK */
 t_stack *new_node(int value);
 t_stack *add_to_stack_a(long *digits_array, char *str);
-t_stack *init_stack(int argc, char **argv);
+t_stack *init_stack(int argc, char **argv, t_stack **stack);
 void	free_stack(t_stack **stack);
 
 /* CHECK_ERRORS */
 char    *check_args(int argc, char **argv);
-void    free_all(t_stack *stack, long *array, char *str);
+void    free_all(t_stack **big_stack, t_stack **stack, long *array, char *str);
 int     check_dups(long *array, char *str);
-void	print_stack(t_stack *stack);
+int     check_errors(char *str);
 
 /* SMALL_ALGORITHM */
 void	algorithm_for_three(t_stack **stack);
