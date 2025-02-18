@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:35:30 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/12 16:29:13 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:20:38 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ void	push_b(t_stack **stack)
 	stack[1] = tmp;
 	write(1, "pb\n", 3);
 }
-

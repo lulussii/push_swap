@@ -49,8 +49,12 @@ $(OBJS_DIR)/%.o: %.c
 
 all: $(NAME)
 
-$(NAME): $(OBJS) libft.h Makefile
-	@ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	@if [ ! -f $(NAME) ]; then \
+		ar rcs $(NAME) $(OBJS); \
+	elif ! ar t $(NAME) | grep -q "$(firstword $(OBJS))"; then \
+		ar rcs $(NAME) $(OBJS); \
+	fi
 
 clean:
 	@rm -rf $(OBJS_DIR)

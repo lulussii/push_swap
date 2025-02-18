@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:47:56 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/14 17:25:03 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:21:15 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,28 @@ int	check_errors(char *str)
 	return (1);
 }
 
-void	free_all(t_stack **big_stack, t_stack **stack, long *array, char *str)
+void	free_stack(t_stack **stack)
 {
-	if(stack)
+	t_stack	*tmp;
+
+	if (!*stack)
+	{
 		free(stack);
+		return ;
+	}
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	free(stack);
+}
+
+void	free_all(t_stack **big_stack, long *array, char *str)
+{
 	if (big_stack)
-		free_stack(big_stack);
+		free(big_stack);
 	if (array)
 		free(array);
 	if (str)

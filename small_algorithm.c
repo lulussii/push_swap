@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:51:08 by lserodon          #+#    #+#             */
-/*   Updated: 2025/01/28 13:01:38 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:22:03 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ void	algorithm_for_three(t_stack **stack)
 	else if (nb_one < nb_two && nb_one > nb_three)
 		reverse_rotate_a(&stack[0], 1);
 }
-

@@ -14,27 +14,31 @@ SRCS = 	main.c\
 		mid_algorithm.c\
 		min_and_max.c\
 		big_algorithm.c\
+		big_algorithm_utils.c\
+		big_algorithm_utils_2.c\
+		setup_digit_array.c\
 		optimisation.c
 
-OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
 OBJS_DIR = objs
+OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-all: $(NAME)
-
 $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(NAME) successfully created! 🎉"
 
-$(LIBFT):
-	@make -C $(LIBFT_DIR)
+$(LIBFT): 
+	@make -C $(LIBFT_DIR) --no-print-directory
+	@touch $(LIBFT)  # Ajout d'un touch pour éviter le relink inutile
 
 clean: 
 	@echo "Cleaning object files..."
@@ -48,4 +52,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re $(LIBFT)
+.PHONY: all clean fclean re
