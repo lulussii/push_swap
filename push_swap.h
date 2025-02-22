@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:07:53 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/18 11:22:23 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:40:28 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int		find_node_place(t_stack *stack, t_stack *node);
 void	sort_to_b(t_stack **stack, t_quart *quarts);
 int		check_quarts(t_quart *quarts, t_stack *stack);
 void	calc_quarts(t_quart *quarts, t_stack *stack);
+void	check_rr_and_rrr(t_stack *node);
 
 /* OPTIMISATION */
 void	fill_ra(t_stack **stack, t_stack *node);

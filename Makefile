@@ -38,7 +38,7 @@ $(NAME): $(OBJS) $(LIBFT)
 
 $(LIBFT): 
 	@make -C $(LIBFT_DIR) --no-print-directory
-	@touch $(LIBFT)  # Ajout d'un touch pour éviter le relink inutile
+	@touch $(LIBFT) 
 
 clean: 
 	@echo "Cleaning object files..."

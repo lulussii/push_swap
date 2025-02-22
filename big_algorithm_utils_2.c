@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:29:44 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/18 14:21:09 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/22 17:44:25 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ t_stack	*node_to_push(t_stack **stack)
 	while (current)
 	{
 		if (current->sort.ra <= 0 && current->sort.rb <= 0)
-			tmp = current->sort.rra + current->sort.rrb;
+			tmp = current->sort.rrr + current->sort.rra + current->sort.rrb;
 		else if (current->sort.rra <= 0 && current->sort.rb <= 0)
 			tmp = current->sort.ra + current->sort.rrb;
 		else if (current->sort.ra <= 0 && current->sort.rrb <= 0)
 			tmp = current->sort.rra + current->sort.rb;
 		else if (current->sort.rra <= 0 && current->sort.rrb <= 0)
-			tmp = current->sort.ra + current->sort.rb;
+			tmp = current->sort.rr + current->sort.ra + current->sort.rb;
 		if (cmp == -1 || tmp < cmp)
 		{
 			cmp = tmp;
@@ -68,6 +68,30 @@ t_stack	*node_to_push(t_stack **stack)
 		current = current->next;
 	}
 	return (to_push);
+}
+
+void	rotate_rr_or_rrr(t_stack **stack, t_stack *to_push)
+{
+	int	rotate;
+	int	direction;
+
+	rotate = 0;
+	direction = 1;
+	if (to_push->sort.rr > 0)
+		rotate = to_push->sort.rr;
+	else if (to_push->sort.rrr > 0)
+	{
+		rotate = to_push->sort.rrr;
+		direction = -1;	
+	}
+	while (rotate)
+	{
+		if (direction == 1)
+			rotate_r(stack);
+		else
+			reverse_rotate_r(stack);
+		rotate--;
+	}
 }
 
 void	rotate_in_a(t_stack **stack, t_stack *to_push)
@@ -124,6 +148,7 @@ void	push_in_a(t_stack **stack)
 
 	fill_structure(stack);
 	to_push = node_to_push(stack);
+	rotate_rr_or_rrr(stack, to_push);
 	rotate_in_a(stack, to_push);
 	rotate_in_b(stack, to_push);
 	push_a(stack);
