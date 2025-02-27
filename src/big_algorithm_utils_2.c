@@ -6,13 +6,13 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:29:44 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/22 17:44:25 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:51:36 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	count_rotate_a(t_stack *stack_a, t_stack *stack_b)
+int	count_rotate_a(t_stack *a, t_stack *b)
 {
 	int	len;
 	int	i;
@@ -20,54 +20,25 @@ int	count_rotate_a(t_stack *stack_a, t_stack *stack_b)
 
 	i = 0;
 	res = 0;
-	len = count_nodes(stack_a);
-	if (stack_b->value < find_number_min(stack_a)->value)
-		res = find_max_position(stack_a);
-	else if (stack_a->value > stack_b->value
-		&& ft_lstlast(stack_a)->value < stack_b->value)
+	len = count_nodes(a);
+	if ((b->value < find_number_min(a)->value)
+		|| (b->value > find_number_max(a)->value))
+		res = find_max_position(a);
+	else if (a->value > b->value
+		&& ft_lstlast(a)->value < b->value)
 		return (0);
-	while (stack_a->next && !res)
+	while (a->next && !res)
 	{
 		i++;
-		if (stack_a->value < stack_b->value
-			&& (stack_a->next)->value > stack_b->value)
+		if (a->value < b->value && (a->next)->value > b->value)
 			res = i;
-		stack_a = stack_a->next;
+		a = a->next;
 	}
-	if (!stack_a->next && !res)
+	if (!a->next && !res)
 		return (-1);
 	if (res > len / 2)
 		return (res - len);
 	return (res);
-}
-
-t_stack	*node_to_push(t_stack **stack)
-{
-	t_stack	*to_push;
-	t_stack	*current;
-	int		tmp;
-	int		cmp;
-
-	current = stack[1];
-	cmp = -1;
-	while (current)
-	{
-		if (current->sort.ra <= 0 && current->sort.rb <= 0)
-			tmp = current->sort.rrr + current->sort.rra + current->sort.rrb;
-		else if (current->sort.rra <= 0 && current->sort.rb <= 0)
-			tmp = current->sort.ra + current->sort.rrb;
-		else if (current->sort.ra <= 0 && current->sort.rrb <= 0)
-			tmp = current->sort.rra + current->sort.rb;
-		else if (current->sort.rra <= 0 && current->sort.rrb <= 0)
-			tmp = current->sort.rr + current->sort.ra + current->sort.rb;
-		if (cmp == -1 || tmp < cmp)
-		{
-			cmp = tmp;
-			to_push = current;
-		}
-		current = current->next;
-	}
-	return (to_push);
 }
 
 void	rotate_rr_or_rrr(t_stack **stack, t_stack *to_push)
@@ -82,7 +53,7 @@ void	rotate_rr_or_rrr(t_stack **stack, t_stack *to_push)
 	else if (to_push->sort.rrr > 0)
 	{
 		rotate = to_push->sort.rrr;
-		direction = -1;	
+		direction = -1;
 	}
 	while (rotate)
 	{

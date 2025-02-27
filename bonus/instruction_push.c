@@ -6,13 +6,13 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:35:30 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/18 14:20:38 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:26:09 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_push_swap.h"
 
-void	push_a(t_stack **stack)
+void	push_a(t_stack **stack, int bool)
 {
 	t_stack	*tmp;
 
@@ -22,10 +22,11 @@ void	push_a(t_stack **stack)
 	stack[1] = stack[1]->next;
 	tmp->next = stack[0];
 	stack[0] = tmp;
-	write(1, "pa\n", 3);
+	if (bool)
+		write(1, "pa\n", 3);
 }
 
-void	push_b(t_stack **stack)
+void	push_b(t_stack **stack, int bool)
 {
 	t_stack	*tmp;
 
@@ -35,5 +36,6 @@ void	push_b(t_stack **stack)
 	stack[0] = stack[0]->next;
 	tmp->next = stack[1];
 	stack[1] = tmp;
-	write(1, "pb\n", 3);
+	if (bool)
+		write(1, "pb\n", 3);
 }

@@ -6,11 +6,11 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:47:29 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/18 14:20:41 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:53:14 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_push_swap.h"
 
 t_stack	*new_node(int value)
 {
@@ -57,14 +57,12 @@ t_stack	*init_stack(int argc, char **argv, t_stack **stack)
 	{
 		free(stack);
 		free(str);
-		write(2, "Error\n", 6);
 		exit(1);
 	}
 	digits_array = set_up_digits_array(str, stack);
 	if (!check_dups(digits_array, str))
 	{
 		free_all(stack, digits_array, str);
-		write(2, "Error\n", 6);
 		exit(1);
 	}
 	stack_a = add_to_stack_a(digits_array, str);

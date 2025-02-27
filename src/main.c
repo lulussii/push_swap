@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:07:55 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/18 11:25:26 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:51:36 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	main(int argc, char **argv)
 		return (0);
 	stack[0] = init_stack(argc, argv, stack);
 	stack[1] = NULL;
-	sort_algorithm(stack);
+	if (!check_sort_a(stack[0]))
+		sort_algorithm(stack);
 	free_stack(stack);
 }

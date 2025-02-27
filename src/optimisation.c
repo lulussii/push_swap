@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:15:51 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/22 17:39:52 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:51:36 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,62 +54,6 @@ void	fill_rrb(t_stack **stack, t_stack *node)
 		node->sort.rrb = -1;
 	else
 		node->sort.rrb = (rotate * -1) + 1;
-}
-
-void	fill_rr(t_stack *node)
-{
-	if (node->sort.ra > 0 && node->sort.rb > 0)
-	{	
-		node->sort.rr = 0;
-		if(node->sort.ra >= node->sort.rb)
-		{
-			while(node->sort.rrb > 0)
-			{
-				node->sort.rr++;
-				node->sort.ra--;
-				node->sort.rb--;
-			}		
-		}
-		else if(node->sort.rb > node->sort.ra)
-		{
-			while(node->sort.ra > 0 )
-			{
-				node->sort.rr++;
-				node->sort.ra--;
-				node->sort.rb--;
-			}
-		}
-	}
-	else
-		node->sort.rr = 0;
-}
-
-void	fill_rrr(t_stack * node)
-{
-	if (node->sort.rra > 0 && node->sort.rrb > 0)
-	{
-		node->sort.rrr = 0;
-		if(node->sort.rra >= node->sort.rrb)
-		{
-			while(node->sort.rrb  > 0)
-			{
-				node->sort.rrr++;
-				node->sort.rra--;
-				node->sort.rrb--;
-			}		
-		}
-		else if(node->sort.rrb > node->sort.rra)
-		{
-			while(node->sort.rra > 0)
-			{
-				node->sort.rrr++;
-				node->sort.rra--;
-				node->sort.rrb--;
-			}
-		}
-	}
-	else
-		node->sort.rrr = 0;
 }
 
 void	fill_structure(t_stack **stack)

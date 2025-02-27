@@ -5,12 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 15:47:56 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/18 14:21:15 by lserodon         ###   ########.fr       */
+/*   Created: 2025/02/27 16:19:42 by lserodon          #+#    #+#             */
+/*   Updated: 2025/02/27 17:52:14 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_push_swap.h"
+
+int	check_sort_a(t_stack *stack_a)
+{
+	while (stack_a && (stack_a)->next)
+	{
+		if ((stack_a)->value > ((stack_a)->next)->value)
+			return (0);
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
 
 char	*check_args(int argc, char **argv)
 {
@@ -66,24 +77,6 @@ int	check_errors(char *str)
 		i++;
 	}
 	return (1);
-}
-
-void	free_stack(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	if (!*stack)
-	{
-		free(stack);
-		return ;
-	}
-	while (*stack)
-	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
-	}
-	free(stack);
 }
 
 void	free_all(t_stack **big_stack, long *array, char *str)
