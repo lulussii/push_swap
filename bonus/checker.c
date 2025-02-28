@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:28 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/28 14:10:36 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:22:47 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	check_instructions(t_stack **stack)
 	}
 	if (!check_sort_a(stack[0]) || stack[1] != NULL)
 	{
-		write(2, "KO\n", 3);
+		write(1, "KO\n", 3);
 		free_stack(stack);
 		exit(1);
 	}
