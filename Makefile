@@ -26,14 +26,14 @@ SRCS =	$(SRCS_DIR)/big_algorithm_utils.c\
 		$(SRCS_DIR)/setup_digit_array.c\
 		$(SRCS_DIR)/small_algorithm.c
 
-BONUS_SRCS =	$(BONUS_DIR)/checker.c\
-				$(BONUS_DIR)/initialisation_stack.c\
-				$(BONUS_DIR)/checker_utils.c\
-				$(BONUS_DIR)/check_errors.c\
-				$(BONUS_DIR)/instruction_push.c\
-				$(BONUS_DIR)/instruction_rotate.c\
-				$(BONUS_DIR)/instruction_reverse_rotate.c\
-				$(BONUS_DIR)/instruction_swap.c\
+BONUS_SRCS =	$(BONUS_DIR)/checker_bonus.c\
+				$(BONUS_DIR)/initialisation_stack_bonus.c\
+				$(BONUS_DIR)/checker_utils_bonus.c\
+				$(BONUS_DIR)/check_errors_bonus.c\
+				$(BONUS_DIR)/instruction_push_bonus.c\
+				$(BONUS_DIR)/instruction_rotate_bonus.c\
+				$(BONUS_DIR)/instruction_reverse_rotate_bonus.c\
+				$(BONUS_DIR)/instruction_swap_bonus.c\
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)

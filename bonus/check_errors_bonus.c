@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_errors.c                                     :+:      :+:    :+:   */
+/*   check_errors_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:19:42 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 17:52:14 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:27:31 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_push_swap.h"
+#include "checker_push_swap_bonus.h"
 
 int	check_sort_a(t_stack *stack_a)
 {

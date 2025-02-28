@@ -6,11 +6,11 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:35:30 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 17:26:09 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:27:58 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_push_swap.h"
+#include "checker_push_swap_bonus.h"
 
 void	push_a(t_stack **stack, int bool)
 {

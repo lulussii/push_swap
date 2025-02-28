@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction_rotate.c                               :+:      :+:    :+:   */
+/*   instruction_reverse_rotate.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 15:33:08 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 17:26:25 by lserodon         ###   ########.fr       */
+/*   Created: 2025/01/24 15:35:28 by lserodon          #+#    #+#             */
+/*   Updated: 2025/02/28 14:28:03 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_push_swap.h"
+#include "checker_push_swap_bonus.h"
 
-void	rotate_a(t_stack **stack, int bool)
+void	reverse_rotate_a(t_stack **stack, int bool)
 {
 	t_stack	*tmp;
 	t_stack	*current;
@@ -20,17 +20,17 @@ void	rotate_a(t_stack **stack, int bool)
 	if (!*stack || !(*stack)->next)
 		return ;
 	tmp = *stack;
-	*stack = (*stack)->next;
+	while (tmp->next && (tmp->next)->next)
+		tmp = tmp->next;
+	current = tmp->next;
 	tmp->next = NULL;
-	current = *stack;
-	while (current->next)
-		current = current->next;
-	current->next = tmp;
+	current->next = *stack;
+	*stack = current;
 	if (bool)
-		write(1, "ra\n", 3);
+		write(1, "rra\n", 4);
 }
 
-void	rotate_b(t_stack **stack, int bool)
+void	reverse_rotate_b(t_stack **stack, int bool)
 {
 	t_stack	*tmp;
 	t_stack	*current;
@@ -38,20 +38,20 @@ void	rotate_b(t_stack **stack, int bool)
 	if (!*stack || !(*stack)->next)
 		return ;
 	tmp = *stack;
-	*stack = (*stack)->next;
+	while (tmp->next && (tmp->next)->next)
+		tmp = tmp->next;
+	current = tmp->next;
 	tmp->next = NULL;
-	current = *stack;
-	while (current->next)
-		current = current->next;
-	current->next = tmp;
+	current->next = *stack;
+	*stack = current;
 	if (bool)
-		write(1, "rb\n", 3);
+		write(1, "rrb\n", 4);
 }
 
-void	rotate_r(t_stack **stack, int bool)
+void	reverse_rotate_r(t_stack **stack, int bool)
 {
-	rotate_a(&stack[0], 0);
-	rotate_b(&stack[1], 0);
+	reverse_rotate_a(&stack[0], 0);
+	reverse_rotate_b(&stack[1], 0);
 	if (bool)
-		write(1, "rr\n", 3);
+		write(1, "rrr\n", 4);
 }

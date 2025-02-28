@@ -6,11 +6,11 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:28:17 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/28 13:29:34 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:27:44 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_push_swap.h"
+#include "checker_push_swap_bonus.h"
 
 int	count_digits(char *str)
 {

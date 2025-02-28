@@ -6,11 +6,11 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:47:29 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/28 11:32:50 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:27:54 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_push_swap.h"
+#include "checker_push_swap_bonus.h"
 
 t_stack	*new_node(int value)
 {

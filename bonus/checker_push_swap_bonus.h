@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_push_swap.h                                :+:      :+:    :+:   */
+/*   checker_push_swap_bonus.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:12:51 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 18:05:10 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:27:39 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_PUSH_SWAP_H
-# define CHECKER_PUSH_SWAP_H
+#ifndef CHECKER_PUSH_SWAP_BONUS_H
+# define CHECKER_PUSH_SWAP_BONUS_H
 
 # include <fcntl.h>
 # include <unistd.h>
