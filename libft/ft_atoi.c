@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:28:27 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/12 14:29:06 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:15:20 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	temp;
 
 	i = 0;

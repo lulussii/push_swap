@@ -6,54 +6,11 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 09:57:05 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 13:36:51 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:05:15 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strjoin_gnl(char *s1, char *s2)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	i = 0;
-	j = 0;
-	if (!s1)
-		return (NULL);
-	if (!s2)
-		return (NULL);
-	str = malloc(sizeof(char) * (ft_strlen_until(s1, '\0') + ft_strlen_until(s2, '\0')
-				+ 1));
-	if (!str)
-	{
-		free(s1);
-		return (NULL);
-	}
-	while (s1[i])
-		str[j++] = s1[i++];
-	i = 0;
-	while (s2[i])
-		str[j++] = s2[i++];
-	str[j] = '\0';
-	free(s1);
-	return (str);
-}
-
-size_t	ft_strlen_until(char *str, int c)
-{
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != c && str[i])
-		i++;
-	if (str[i] == '\n')
-		i++;
-	return (i);
-}
 
 void	fill_stash(char *buffer, char *stash)
 {
@@ -112,7 +69,9 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = fill_line(fd, stash);
 	fill_stash(buffer, stash);
-	line = ft_substr(buffer, 0, ft_strlen_until(buffer, '\n'));
+	line = ft_substr_gnl(buffer, 0, ft_strlen_until(buffer, '\n'));
+	if (!line)
+		free(line);
 	free(buffer);
 	if (!ft_strlen_until(line, '\0'))
 	{

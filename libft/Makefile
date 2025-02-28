@@ -40,6 +40,7 @@ SRCS = ft_atoi.c\
 	ft_lstadd_back_bonus.c\
 	ft_lstlast_bonus.c\
 	get_next_line.c\
+	get_next_line_utils.c\
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 OBJS_DIR = objs

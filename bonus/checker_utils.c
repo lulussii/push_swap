@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:28:17 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 17:59:55 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 13:29:34 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ long	*fill_digits_array(char *str, long *digits_array, t_stack **stack)
 		if (ft_atoi(&str[i]) > INT_MAX || ft_atoi(&str[i]) < INT_MIN)
 		{
 			free_all(stack, digits_array, str);
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		if (str[i] == '-' || str[i] == '+')

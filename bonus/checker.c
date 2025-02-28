@@ -6,11 +6,37 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:28 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 18:06:26 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:10:36 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_push_swap.h"
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!*stack)
+	{
+		free(stack);
+		return ;
+	}
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	free(stack);
+}
+
+void	print_error(t_stack **stack, char *line)
+{
+	write(2, "Error\n", 6);
+	free_stack(stack);
+	free(line);
+	exit(1);
+}
 
 void	execute_instructions(t_stack **stack, char *line)
 {
@@ -36,6 +62,8 @@ void	execute_instructions(t_stack **stack, char *line)
 		reverse_rotate_b(&stack[1], 0);
 	else if (!ft_strncmp(line, "rrr\n", 4))
 		reverse_rotate_r(stack, 0);
+	else
+		print_error(stack, line);
 }
 
 void	check_instructions(t_stack **stack)
@@ -52,7 +80,7 @@ void	check_instructions(t_stack **stack)
 	if (!check_sort_a(stack[0]) || stack[1] != NULL)
 	{
 		write(2, "KO\n", 3);
-		free_all(stack, NULL, NULL);
+		free_stack(stack);
 		exit(1);
 	}
 	else
@@ -71,4 +99,5 @@ int	main(int argc, char **argv)
 	stack[0] = init_stack(argc, argv, stack);
 	stack[1] = NULL;
 	check_instructions(stack);
+	free_stack(stack);
 }
