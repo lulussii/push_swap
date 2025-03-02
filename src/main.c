@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:07:55 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 17:51:36 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:05:50 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	count_digits(char *str)
 
 	i = 0;
 	count = 0;
-	if (!str)
+	if (!str[i])
 		return (0);
 	while (str[i] && str[i] != ' ')
 		i++;

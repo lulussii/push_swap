@@ -6,7 +6,7 @@
 /*   By: lserodon <lserodon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:26:53 by lserodon          #+#    #+#             */
-/*   Updated: 2025/02/27 17:51:36 by lserodon         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:51:14 by lserodon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 void	calc_quarts(t_quart *quarts, t_stack *stack)
 {
-	quarts->q1 = find_number_max(stack)->value * 0.25;
-	quarts->median = find_number_max(stack)->value * 0.5;
-	quarts->q3 = find_number_max(stack)->value * 0.75;
+	int	min;
+	int	max;
+
+	min = find_number_min(stack)->value;
+	max = find_number_max(stack)->value;
+	quarts->q1 = min + (max - min) * 0.25;
+	quarts->median = min + (max - min) * 0.5;
+	quarts->q3 = min + (max - min) * 0.75;
 }
 
 int	check_quarts(t_quart *quarts, t_stack *stack)
